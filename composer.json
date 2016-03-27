@@ -1,0 +1,24 @@
+{
+    "description": "Yet another Slim Framework skeleton",
+    "type": "project",
+    "keywords": ["slim-framework"],
+    "authors": [
+        {
+            "name": "Aditya Darmawan",
+            "email": "addaraquthny@gmail.com",
+            "homepage": "http://adityadarmawan.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jenang\\": "src/Jenang/",
+            "App\\": "src/App/"
+        }
+    },
+    "require": {
+        "slim/slim": "3.0",
+        "monolog/monolog": "1.13",
+        "illuminate/database": "5.0",
+        "league/plates": "3.*"
+    }
+}

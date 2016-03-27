@@ -1,0 +1,5 @@
+!.gitkeep
+bootstrap/environments.php
+public/.htaccess
+vendor
+composer.lock
