@@ -1,0 +1,3 @@
+<?php
+
+$c['debug'] = true;

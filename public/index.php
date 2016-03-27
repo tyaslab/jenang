@@ -11,7 +11,10 @@ $c['App\Controller\BaseController'] = function($c) {
 };
 
 // BOOTSTRAPS
-require __DIR__ . '/../bootstrap/environments.php';
+require __DIR__ . '/../bootstrap/settings.php';
+
+if (file_exists(__DIR__ . '/../bootstrap/local_settings.php'))
+    require __DIR__ . '/../bootstrap/local_settings.php';
 require __DIR__ . '/../bootstrap/errorhandlers.php';
 require __DIR__ . '/../bootstrap/database.php';
 require __DIR__ . '/../bootstrap/routes.php';
