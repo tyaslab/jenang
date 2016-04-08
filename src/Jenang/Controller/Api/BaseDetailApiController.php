@@ -1,8 +1,8 @@
 <?php
 
-namespace Jenang\Controller\API;
+namespace Jenang\Controller\Api;
 
-class BaseDetailAPIController extends BaseAPIController {
+class BaseDetailApiController extends BaseApiController {
     protected $form_class;
     protected $allowed_methods = ['GET', 'PUT', 'DELETE'];
 

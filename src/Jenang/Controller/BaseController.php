@@ -2,13 +2,19 @@
 
 namespace Jenang\Controller;
 
+use Jenang\Util\FlashMessages;
+
 class BaseController {
     protected $c;
     private $templates;
 
     protected $request;
     protected $response;
-    protected $args;
+    protected $args = [];
+    protected $context_data = [
+        'STATIC_URL' => '/static/',
+        'MEDIA_URL' => '/media/'
+    ];
 
     protected $allowed_methods = ['GET', 'POST'];
     protected $user;
@@ -16,9 +22,16 @@ class BaseController {
     function __construct($c) {
         $this->c = $c;
         $this->templates = new \League\Plates\Engine('../src/App/View');
+
+        $this->templates->registerFunction('arrget', function($arr, $idx, $default=null) {
+            return Arr::get($arr, $idx, $default);
+        });
+
+        $this->message = new FlashMessages();
     }
 
     function render($template_path, $data=[]) {
+        $data = array_merge($this->context_data, $data);
         echo $this->templates->render($template_path, $data);
     }
 
@@ -30,7 +43,7 @@ class BaseController {
         
     }
 
-    function dispatch($request, $response, $args) {
+    function dispatch($request, $response, $args=[]) {
         $this->request = $request;
         $this->response = $response;
         $this->args = $args;
@@ -49,6 +62,13 @@ class BaseController {
 
         if (!method_exists($this, $method_function))
             throw new \Exception("Class method $method_function not implemented");
+
+        $this->context_data['request'] = $request;
+        $this->context_data['response'] = $response;
+        $this->context_data['args'] = $args;
+        $this->context_data['user'] = $this->user;
+        $this->context_data['method'] = $method;
+        $this->context_data['message'] = $this->message;
 
         return call_user_func_array([$this, strtolower($method)], []);
     }

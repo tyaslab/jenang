@@ -22,16 +22,3 @@ class RegexValidator extends BaseValidator {
         return true;
     }
 }
-
-class NumberValidator extends RegexValidator {
-    protected $pattern = "/^[0-9]+$/";
-}
-
-class DecimalValidator extends RegexValidator {
-    protected $pattern = "/^[0-9]+(\.[0-9]+)?$/";
-}
-
-class EmailValidator extends RegexValidator {
-    // From http://stackoverflow.com/questions/13447539/php-preg-match-with-email-validation-issue
-    protected $pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/";
-}

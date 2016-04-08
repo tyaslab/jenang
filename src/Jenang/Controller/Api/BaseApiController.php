@@ -1,10 +1,10 @@
 <?php
 
-namespace Jenang\Controller\API;
+namespace Jenang\Controller\Api;
 
 use Jenang\Controller\BaseController;
 
-class BaseAPIController extends BaseController {
+class BaseApiController extends BaseController {
     protected $error_message = [];
 
     protected function immediateResponse($status) {

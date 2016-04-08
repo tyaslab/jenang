@@ -1,8 +1,8 @@
 <?php
 
-namespace Jenang\Controller\API;
+namespace Jenang\Controller\Api;
 
-class BaseListAPIController extends BaseAPIController {
+class BaseListApiController extends BaseApiController {
     protected $limit = 20;
     protected $form_class;
 
@@ -59,8 +59,11 @@ class BaseListAPIController extends BaseAPIController {
         $current_page = $this->getCurrentPage();
         $limit = $this->getLimit();
 
-
-        $total_page = ceil($count / $limit);
+        $total_page = 1;
+        
+        if ($limit > 0) {
+            $total_page = ceil($count / $limit);
+        }
 
         if ($total_page == 0) $total_page = 1;
 

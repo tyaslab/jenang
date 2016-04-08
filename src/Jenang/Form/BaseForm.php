@@ -7,18 +7,20 @@ use Illuminate\Support\Arr;
 
 class BaseForm {
     protected $fields = [];
-    protected $instance;
+    public $instance;
 
     public $cleaned_data = [];
     public $errors = [];
 
     public function __construct() {
         $args = func_get_args();
-        $data = $args[0];
+        $data = Arr::get($args, 0, []);
         $instance = Arr::get($args, 1);
+        $context = Arr::get($args, 2, []);
 
         $this->data = $data;
         $this->instance = $instance;
+        $this->context = $context;
         $this->setFields();
     }
 
@@ -51,10 +53,9 @@ class BaseForm {
                     }
                 }
                 if (!$has_error) $this->cleaned_data[$field] = $this->getValue($field);
-            } else {
-                echo 'di sini ' . $field;
             }
         }
+        
         return !$this->errors;
     }
 
