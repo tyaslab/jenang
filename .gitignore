@@ -1,0 +1,6 @@
+!.gitkeep
+bootstrap/local_settings.php
+public/.htaccess
+vendor
+stashed
+composer.lock
