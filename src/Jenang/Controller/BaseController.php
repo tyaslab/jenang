@@ -22,6 +22,11 @@ class BaseController {
 
     function __construct($c) {
         $this->c = $c;
+        $this->templates = new \League\Plates\Engine('../src/App/View');
+
+        $this->templates->registerFunction('arrget', function($arr, $idx, $default=null) {
+            return Arr::get($arr, $idx, $default);
+        });
     }
 
     function render($template_path, $data=[]) {

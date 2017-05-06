@@ -13,13 +13,6 @@ $c['App\Controller\BaseController'] = function($c) {
     return new App\Controller\BaseController($c);
 };
 
-// $c['flash'] = function () {
-//     return new \Slim\Flash\Messages();
-// };
-
-// $c['renderer'] = new \Slim\Views\PhpRenderer('../src/App/View');
-
-
 // BOOTSTRAPS
 require __DIR__ . '/../bootstrap/settings.php';
 
